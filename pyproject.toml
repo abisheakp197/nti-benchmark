@@ -1,0 +1,25 @@
+[project]
+name = "nti-benchmark"
+version = "0.1.0"
+description = "Verifiable security benchmark for AI agent frameworks"
+requires-python = ">=3.11"
+dependencies = [
+    "nti-attack>=0.1.0",
+    "ube-foundation>=0.1.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "httpx>=0.27.0",
+]
+
+
+[project.scripts]
+nti-benchmark = "cli.main:main"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+
+[tool.setuptools.packages.find]
+include = ["benchmarks*", "runner*", "cli*"]

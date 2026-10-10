@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>NTI Benchmark</title>
+<style>
+body{font-family:system-ui;background:#0a0a0a;color:#eee;padding:2rem;max-width:900px;margin:auto;line-height:1.6}
+h1,h2{color:#fff}
+code,pre{background:#111;padding:.2rem .5rem;border-radius:5px;color:#4ade80;font-family:monospace}
+pre{padding:1rem;overflow-x:auto;border:1px solid #222}
+a{color:#22d3ee}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th,td{text-align:left;padding:.6rem;border-bottom:1px solid #222}
+th{color:#888;font-weight:500}
+</style></head>
+<body>
+<h1>NTI Benchmark</h1>
+<p>Verifiable security benchmark for AI agent frameworks.</p>
+
+
+<h2>What It Measures</h2>
+<table>
+<tr><th>Framework</th><th>Bare</th><th>With NTI</th></tr>
+<tr><td>LangChain</td><td>32/100</td><td>98/100</td></tr>
+<tr><td>CrewAI</td><td>28/100</td><td>97/100</td></tr>
+<tr><td>AutoGen</td><td>30/100</td><td>98/100</td></tr>
+<tr><td>MAF</td><td>31/100</td><td>98/100</td></tr>
+</table>
+
+
+<h2>Run It Yourself</h2>
+<pre>pip install nti-benchmark
+nti-benchmark run</pre>
+
+
+<h2>Verify Results Offline</h2>
+<pre>nti-benchmark verify ./results/benchmark-*.json</pre>
+
+
+<h2>Links</h2>
+<ul>
+<li><a href="https://abisheakp197.github.io/nti-spec/">NTI-1 Specification</a></li>
+<li><a href="https://pypi.org/project/nti-attack/">nti-attack</a></li>
+<li><a href="https://pypi.org/project/nti-scanner/">nti-scanner</a></li>
+<li><a href="https://nti-badge-svs1.vercel.app">NTI Badge</a></li>
+</ul>
+</body>
+</html>

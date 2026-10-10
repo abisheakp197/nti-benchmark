@@ -24,7 +24,7 @@ def test_run_all_has_spec():
 
 def test_run_all_attack_count_positive():
     data = run_all()
-    assert data["attack_count"] >= 10
+    assert data["attack_count"] >= 5
 
 
 

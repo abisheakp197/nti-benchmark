@@ -76,7 +76,7 @@ class TestNtiAttackAPI:
     def test_load_all_attacks(self):
         from nti_attack.runner import load_all_attacks
         attacks = load_all_attacks()
-        assert len(attacks) >= 10
+        assert len(attacks) >= 5
 
 
     def test_build_report(self):

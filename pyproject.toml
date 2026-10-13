@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nti-benchmark"
-version = "0.1.0"
+version = "0.1.1"
 description = "Verifiable security benchmark for AI agent frameworks"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -23,7 +23,7 @@ classifiers = [
     "Topic :: Security",
 ]
 dependencies = [
-    "nti-attack>=0.1.0",
+    "nti-attack-library>=0.1.0",
     "ube-foundation>=0.1.0",
     "click>=8.1.0",
     "rich>=13.0.0",

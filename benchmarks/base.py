@@ -2,15 +2,12 @@
 
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from typing import Any
 
-
-from nti_attack.runner import load_all_attacks, run_attacks
-from nti_attack.adapters.base import AgentAdapter
-from nti_attack.attestation import build_report
-
-
+from nti_attack.adapters.base import AgentAdapter  # type: ignore[import-untyped]
+from nti_attack.attestation import build_report  # type: ignore[import-untyped]
+from nti_attack.runner import load_all_attacks, run_attacks  # type: ignore[import-untyped]
 
 
 class FrameworkBenchmark(ABC):
@@ -35,7 +32,7 @@ class FrameworkBenchmark(ABC):
         raise NotImplementedError
 
 
-    def run(self) -> Dict[str, Any]:
+    def run(self) -> dict[str, Any]:
         attacks = load_all_attacks()
 
 
@@ -59,7 +56,7 @@ class FrameworkBenchmark(ABC):
             "framework_id": self.framework_id,
             "framework_name": self.framework_name,
             "framework_version": self.framework_version,
-            "run_at": datetime.now(timezone.utc).isoformat(),
+            "run_at": datetime.now(UTC).isoformat(),
             "bare": {
                 "score": bare_report["resistance_score"],
                 "attacks_run": bare_report["attacks_run"],

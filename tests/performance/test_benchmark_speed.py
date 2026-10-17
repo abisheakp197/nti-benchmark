@@ -2,12 +2,11 @@
 
 
 import time
+
 from runner.run_benchmark import run_all
 
 
-
-
-def test_full_benchmark_under_30_seconds():
+def test_full_benchmark_under_30_seconds() -> None:
     t0 = time.time()
     run_all()
     elapsed = time.time() - t0

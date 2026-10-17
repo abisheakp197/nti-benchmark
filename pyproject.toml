@@ -7,7 +7,7 @@ name = "nti-benchmark"
 version = "0.1.1"
 description = "Verifiable security benchmark for AI agent frameworks"
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 requires-python = ">=3.11"
 authors = [
     {name = "Abisheak P", email = "abisheakp197@gmail.com"}
@@ -16,7 +16,6 @@ keywords = ["ai", "security", "benchmark", "post-quantum", "nti", "agents"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -24,7 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "nti-attack-library>=0.1.0",
-    "ube-foundation>=0.1.0",
+    "ube-foundation>=0.1.7",
     "click>=8.1.0",
     "rich>=13.0.0",
     "httpx>=0.27.0",
@@ -45,6 +44,7 @@ dev = [
     "pytest-random-order>=1.1.0",
     "build>=1.0.0",
     "twine>=5.0.0",
+    "nti-scanner>=0.1.0",
 ]
 
 [tool.setuptools.packages.find]

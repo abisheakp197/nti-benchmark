@@ -2,16 +2,17 @@
 
 
 import json
+from collections.abc import Callable
+from datetime import UTC, datetime
 from pathlib import Path
-from datetime import datetime, timezone
-
+from typing import Any
 
 from benchmarks import ALL_BENCHMARKS
 
 
-
-
-def run_all(progress_cb=None) -> dict:
+def run_all(
+    progress_cb: Callable[[int, int, str], None] | None = None,
+) -> dict[str, Any]:
     results = []
     for i, cls in enumerate(ALL_BENCHMARKS):
         if progress_cb:
@@ -22,7 +23,7 @@ def run_all(progress_cb=None) -> dict:
 
     return {
         "spec": "NTI-Benchmark/1",
-        "run_at": datetime.now(timezone.utc).isoformat(),
+        "run_at": datetime.now(UTC).isoformat(),
         "framework_count": len(results),
         "attack_count": results[0]["attack_count"] if results else 0,
         "results": results,
@@ -31,7 +32,7 @@ def run_all(progress_cb=None) -> dict:
 
 
 
-def save_results(data: dict, output_dir: str = "results") -> Path:
+def save_results(data: dict[str, Any], output_dir: str = "results") -> Path:
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
     ts = data["run_at"].replace(":", "-").replace(".", "-")

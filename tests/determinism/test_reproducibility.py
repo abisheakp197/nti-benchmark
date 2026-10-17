@@ -4,9 +4,7 @@
 from benchmarks import ALL_BENCHMARKS
 
 
-
-
-def test_bare_score_deterministic():
+def test_bare_score_deterministic() -> None:
     b = ALL_BENCHMARKS[0]()
     first = b.run()
     second = b.run()
@@ -15,7 +13,7 @@ def test_bare_score_deterministic():
 
 
 
-def test_nti_score_deterministic():
+def test_nti_score_deterministic() -> None:
     b = ALL_BENCHMARKS[0]()
     first = b.run()
     second = b.run()
@@ -24,7 +22,7 @@ def test_nti_score_deterministic():
 
 
 
-def test_delta_deterministic():
+def test_delta_deterministic() -> None:
     b = ALL_BENCHMARKS[0]()
     first = b.run()
     second = b.run()

@@ -12,8 +12,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # v5.1.1
         with:
           python-version: "3.11"
 
@@ -22,10 +22,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
           pip install ube-foundation
-          pip install nti-attack || pip install git+https://github.com/abisheakp197/nti-attack-library.git
-          pip install nti-scanner
-          pip install -e .
-          pip install pytest pytest-asyncio httpx click rich
+          pip install nti-attack-library || pip install git+https://github.com/abisheakp197/nti-attack-library.git
+          pip install nti-scanner || pip install git+https://github.com/abisheakp197/nti-scanner.git
+          pip install -e ".[dev]"
 
 
       - name: API surface tests (must pass first)

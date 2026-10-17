@@ -1,20 +1,19 @@
 """Shared fixtures. No mocks of real APIs."""
 
 
+from pathlib import Path
+from typing import Any
+
 import pytest
 
 
-
-
 @pytest.fixture
-def benchmark_output_dir(tmp_path):
+def benchmark_output_dir(tmp_path: Path) -> Path:
     return tmp_path / "results"
 
 
-
-
 @pytest.fixture
-def sample_benchmark_result():
+def sample_benchmark_result() -> dict[str, Any]:
     return {
         "framework_id": "test",
         "framework_name": "Test Framework",

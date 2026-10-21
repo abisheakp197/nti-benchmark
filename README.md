@@ -76,3 +76,53 @@ Apache License 2.0. See LICENSE.
 - nti-attack: https://pypi.org/project/nti-attack/
 - nti-scanner: https://pypi.org/project/nti-scanner/
 - nti-badge: https://nti-badge-svs1.vercel.app
+
+
+## Architecture
+
+```mermaid
+graph TD
+    subgraph BE["Benchmark Engine"]
+        CLI["CLI (cli/main.py)"]
+        Runner["Runner (runner/run_benchmark.py)"]
+        Config["Config Loader (benchmarks/__init__.py)"]
+    end
+
+    subgraph FA["Framework Adapters"]
+        Base["FrameworkBenchmark Base Class"]
+        LC["LangChain Benchmark"]
+        CR["CrewAI Benchmark"]
+        AG["AutoGen Benchmark"]
+        MAF["MAF Benchmark"]
+    end
+
+    subgraph AI["Attack Injection"]
+        NAL["nti-attack-library"]
+        LoadAttacks["load_all_attacks()"]
+        RunAttacks["run_attacks()"]
+        BareVsNTI["Bare vs. NTI-Secured Execution"]
+    end
+
+    subgraph AG_SUB["Attestation Generation"]
+        PQC["ube-foundation (PqcKeyPair)"]
+        Hash["SHA-256 Payload Hashing (cert_hash)"]
+        Sign["Dilithium5 Post-Quantum Signature"]
+        Report["Signed Verifiable Report (.json)"]
+    end
+
+    CLI -->|"1. Trigger Benchmark"| Runner
+    Runner -->|"2. Load Frameworks"| Config
+    Config --> LC & CR & AG & MAF
+
+    LC & CR & AG & MAF -->|"Inherit Harness"| Base
+    Base -->|"3. Import Library"| NAL
+    NAL --> LoadAttacks
+    LoadAttacks --> RunAttacks
+    RunAttacks -->|"4. Run Baseline vs Secured"| BareVsNTI
+
+    BareVsNTI -->|"5. Compute Delta & Score"| Runner
+    Runner -->|"6. Pass Results Payload"| PQC
+    PQC --> Hash
+    Hash --> Sign
+    Sign -->|"7. Output Artifact"| Report
+```

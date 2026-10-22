@@ -1,3 +1,5 @@
+[![NTI Verified](https://img.shields.io/badge/NTI_Score-85%2F100-brightgreen)](https://nti-registry.vercel.app)
+
 # NTI Benchmark
 
 
